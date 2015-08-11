@@ -1,10 +1,13 @@
 ﻿$ErrorActionPreference = 'Stop';
 
-Set-ExecutionPolicy RemoteSigned
+
+
+if(-Not (Get-Module PsGet))
+{
+Set-ExecutionPolicy RemoteSigned -Force
 "Installing PSGet"
 (new-object Net.WebClient).DownloadString("http://psget.net/GetPsGet.ps1") | iex 
-
-
+}
 
 if ($env:Path.Contains("chocolatey"))
 {
@@ -41,7 +44,10 @@ Install-ChocoIfNotAlready resharper
 Install-ChocoIfNotAlready nodejs.install
 Install-ChocoIfNotAlready Jump-Location
 
+if(-not (Get-Module posh-git)
+{
 Install-Module posh-git
+}
 
 if (-not (Test-Path HKCU:\Software\Microsoft\OneDrive))
 {
