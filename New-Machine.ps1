@@ -1,5 +1,11 @@
 ﻿$ErrorActionPreference = 'Stop';
 
+Set-ExecutionPolicy RemoteSigned
+"Installing PSGet"
+(new-object Net.WebClient).DownloadString("http://psget.net/GetPsGet.ps1") | iex 
+
+
+
 if ($env:Path.Contains("chocolatey"))
 {
     "Choco already installed"
@@ -26,6 +32,7 @@ function Install-ChocoIfNotAlready($name) {
 Install-ChocoIfNotAlready google-chrome-x64
 Install-ChocoIfNotAlready skype
 Install-ChocoIfNotAlready git.install
+Install-ChocoIfNotAlready gitextensions
 Install-ChocoIfNotAlready putty.install
 Install-ChocoIfNotAlready SublimeText3
 Install-ChocoIfNotAlready SublimeText3.PackageControl
@@ -33,6 +40,8 @@ Install-ChocoIfNotAlready fiddler4
 Install-ChocoIfNotAlready resharper
 Install-ChocoIfNotAlready nodejs.install
 Install-ChocoIfNotAlready Jump-Location
+
+Install-Module posh-git
 
 if (-not (Test-Path HKCU:\Software\Microsoft\OneDrive))
 {
