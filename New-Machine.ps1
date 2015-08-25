@@ -32,6 +32,17 @@ function Install-ChocoIfNotAlready($name) {
     }
 }
 
+function Install-ModuleIfNotAlready($name){
+    if(Get-Module $name){
+        "$name already installed"
+    }
+    else
+    {
+        "Installing $name"
+        Install-Module -Name
+    }
+}
+
 Install-ChocoIfNotAlready google-chrome-x64
 Install-ChocoIfNotAlready skype
 Install-ChocoIfNotAlready git.install
@@ -44,10 +55,8 @@ Install-ChocoIfNotAlready resharper
 Install-ChocoIfNotAlready nodejs.install
 Install-ChocoIfNotAlready Jump-Location
 
-if(-not (Get-Module posh-git)
-{
-Install-Module posh-git
-}
+Install-ModuleIfNotAlready posh-git
+Install-ModuleIfNotAlready PSReadline
 
 if (-not (Test-Path HKCU:\Software\Microsoft\OneDrive))
 {
