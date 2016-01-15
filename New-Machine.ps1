@@ -53,10 +53,11 @@ Install-ChocoIfNotAlready SublimeText3.PackageControl
 Install-ChocoIfNotAlready fiddler4
 Install-ChocoIfNotAlready resharper
 Install-ChocoIfNotAlready nodejs.install
-Install-ChocoIfNotAlready Jump-Location
+
 
 Install-ModuleIfNotAlready posh-git
 Install-ModuleIfNotAlready PSReadline
+Install-ModuleIfNotAlready Jump.Location
 
 if (-not (Test-Path HKCU:\Software\Microsoft\OneDrive))
 {
