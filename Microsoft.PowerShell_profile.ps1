@@ -7,6 +7,7 @@ Push-Location (Split-Path -Path $MyInvocation.MyCommand.Definition -Parent)
 # use this instead (see about_Modules for more information):
 Import-Module posh-git
 Import-Module PSReadline
+Import-Module Jump.Location
 
 Set-PSReadlineKeyHandler -Key Tab -Function Complete
 
